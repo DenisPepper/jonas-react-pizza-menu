@@ -49,19 +49,47 @@ const pizzaData = [
 const App = () => {
   return (
     <>
-      <h1>Hello, React</h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Header />
+      <Main />
+      <Footer />
     </>
   );
 };
 
+const Header = () => {
+  return (
+    <header>
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
+};
+
+const Main = () => {
+  return (
+    <main>
+      <Pizza />
+    </main>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer>
+      {new Date().toLocaleDateString()}. We are currently open! 
+    </footer>
+  );
+};
+
 const Pizza = () => {
-  return(
+  return (
     <article>
       <h2>Focaccia</h2>
-      <img src='./pizzas/focaccia.jpg' alt='pizza Focaccia.' width={400} height={400}/>
+      <img
+        src='./pizzas/focaccia.jpg'
+        alt='pizza Focaccia.'
+        width={400}
+        height={400}
+      />
       <p>Bread with italian olive oil and rosemary</p>
     </article>
   );
