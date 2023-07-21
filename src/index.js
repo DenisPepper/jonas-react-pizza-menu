@@ -67,30 +67,33 @@ const Header = () => {
 const Main = () => {
   return (
     <main>
-      <Pizza />
+      <section>
+        <h2>Our menu</h2>
+        <ul>
+          {pizzaData.map((item) => <Pizza key={item.name} name={item.name} photoName={item.photoName} ingredients={item.ingredients}/>)}
+        </ul>
+      </section>
     </main>
   );
 };
 
 const Footer = () => {
   return (
-    <footer>
-      {new Date().toLocaleDateString()}. We are currently open! 
-    </footer>
+    <footer>{new Date().toLocaleDateString()}. We are currently open!</footer>
   );
 };
 
-const Pizza = () => {
+const Pizza = ({name, photoName, ingredients}) => {
   return (
     <article>
-      <h2>Focaccia</h2>
+      <h3>{name}</h3>
       <img
-        src='./pizzas/focaccia.jpg'
-        alt='pizza Focaccia.'
+        src={`./${photoName}`}
+        alt={`pizza ${name}.`}
         width={400}
         height={400}
       />
-      <p>Bread with italian olive oil and rosemary</p>
+      <p>{ingredients}</p>
     </article>
   );
 };
