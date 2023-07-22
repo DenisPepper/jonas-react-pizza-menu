@@ -66,20 +66,19 @@ const Header = () => {
 };
 
 const Main = () => {
+  const pizzas = pizzaData;
+
   return (
     <main className='menu'>
       <h2>Our menu</h2>
-      <ul className='pizzas'>
-        {pizzaData.map((item) => (
-          <Pizza
-            key={item.name}
-            name={item.name}
-            photoName={item.photoName}
-            ingredients={item.ingredients}
-            price={item.price}
-          />
-        ))}
-      </ul>
+
+      {pizzas && (
+        <ul className='pizzas'>
+          {pizzas.map((pizza) => (
+            <Pizza key={pizza.name} pizza={pizza} />
+          ))}
+        </ul>
+      )}
     </main>
   );
 };
@@ -89,35 +88,31 @@ const Footer = () => {
   const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour < closeHour;
-  
+
   return (
     <footer className='footer'>
-      {
-        isOpen && 
-        (
-          <div className='order'>
-            <p>
-              We are open until {closeHour}:00. Come visit us or order online.
-            </p>
-            <button className='btn' type='button'>Order</button>
-          </div>
-        )
-      }
+      {isOpen && (
+        <div className='order'>
+          <p>
+            We are open until {closeHour}:00. Come visit us or order online.
+          </p>
+          <button className='btn' type='button'>
+            Order
+          </button>
+        </div>
+      )}
     </footer>
   );
 };
 
-const Pizza = ({ name, photoName, ingredients, price }) => {
+const Pizza = ({ pizza }) => {
   return (
     <li className='pizza'>
-      <img
-        src={`./${photoName}`}
-        alt={`pizza ${name}.`}
-      />
+      <img src={`./${pizza.photoName}`} alt={`pizza ${pizza.name}.`} />
       <div>
-        <h3>{name}</h3>
-        <p>{ingredients}</p>
-        <span>{price}</span>
+        <h3>{pizza.name}</h3>
+        <p>{pizza.ingredients}</p>
+        <span>{pizza.price}</span>
       </div>
     </li>
   );
