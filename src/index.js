@@ -76,6 +76,7 @@ const Main = () => {
             name={item.name}
             photoName={item.photoName}
             ingredients={item.ingredients}
+            price={item.price}
           />
         ))}
       </ul>
@@ -85,21 +86,24 @@ const Main = () => {
 
 const Footer = () => {
   return (
-    <footer className='footer'>{new Date().toLocaleDateString()}. We are currently open!</footer>
+    <footer className='footer'>
+      {new Date().toLocaleDateString()}. We are currently open!
+    </footer>
   );
 };
 
-const Pizza = ({ name, photoName, ingredients }) => {
+const Pizza = ({ name, photoName, ingredients, price }) => {
   return (
-    <article>
-      <h3>{name}</h3>
+    <article className='pizza'>
       <img
         src={`./${photoName}`}
         alt={`pizza ${name}.`}
-        width={400}
-        height={400}
       />
-      <p>{ingredients}</p>
+      <div>
+        <h3>{name}</h3>
+        <p>{ingredients}</p>
+        <span>{price}</span>
+      </div>
     </article>
   );
 };
