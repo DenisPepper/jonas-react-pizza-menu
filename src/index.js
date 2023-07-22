@@ -66,13 +66,13 @@ const Header = () => {
 };
 
 const Main = () => {
-  const pizzas = pizzaData;
+  const pizzas = [];
 
   return (
     <main className='menu'>
       <h2>Our menu</h2>
 
-      {pizzas && (
+      {pizzas?.length > 0 && (
         <ul className='pizzas'>
           {pizzas.map((pizza) => (
             <Pizza key={pizza.name} pizza={pizza} />
