@@ -66,18 +66,21 @@ const Header = () => {
 };
 
 const Main = () => {
-  const pizzas = [];
-
+  const pizzas = pizzaData;
+  // const pizzas = [];
+  
   return (
     <main className='menu'>
       <h2>Our menu</h2>
 
-      {pizzas?.length > 0 && (
+      {pizzas?.length > 0 ? (
         <ul className='pizzas'>
           {pizzas.map((pizza) => (
             <Pizza key={pizza.name} pizza={pizza} />
           ))}
         </ul>
+      ) : (
+        <p>We are still working on our menu. Please come back later 🍕`</p>
       )}
     </main>
   );
