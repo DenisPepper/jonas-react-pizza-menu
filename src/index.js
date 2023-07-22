@@ -94,17 +94,23 @@ const Footer = () => {
 
   return (
     <footer className='footer'>
-      {isOpen && (
-        <div className='order'>
-          <p>
-            We are open until {closeHour}:00. Come visit us or order online.
-          </p>
-          <button className='btn' type='button'>
-            Order
-          </button>
-        </div>
+      {isOpen ? (
+        <Order closeHour={closeHour} />
+      ) : (
+        <p>We are close. Come back tomorrow</p>
       )}
     </footer>
+  );
+};
+
+const Order = ({ closeHour }) => {
+  return (
+    <div className='order'>
+      <p>We are open until {closeHour}:00. Come visit us or order online.</p>
+      <button className='btn' type='button'>
+        Order
+      </button>
+    </div>
   );
 };
 
