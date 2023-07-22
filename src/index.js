@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 
 const pizzaData = [
   {
@@ -48,17 +49,17 @@ const pizzaData = [
 
 const App = () => {
   return (
-    <>
+    <div className='container'>
       <Header />
       <Main />
       <Footer />
-    </>
+    </div>
   );
 };
 
 const Header = () => {
   return (
-    <header>
+    <header className='header'>
       <h1>Fast React Pizza Co.</h1>
     </header>
   );
@@ -66,24 +67,29 @@ const Header = () => {
 
 const Main = () => {
   return (
-    <main>
-      <section>
-        <h2>Our menu</h2>
-        <ul>
-          {pizzaData.map((item) => <Pizza key={item.name} name={item.name} photoName={item.photoName} ingredients={item.ingredients}/>)}
-        </ul>
-      </section>
+    <main className='menu'>
+      <h2>Our menu</h2>
+      <ul className='pizzas'>
+        {pizzaData.map((item) => (
+          <Pizza
+            key={item.name}
+            name={item.name}
+            photoName={item.photoName}
+            ingredients={item.ingredients}
+          />
+        ))}
+      </ul>
     </main>
   );
 };
 
 const Footer = () => {
   return (
-    <footer>{new Date().toLocaleDateString()}. We are currently open!</footer>
+    <footer className='footer'>{new Date().toLocaleDateString()}. We are currently open!</footer>
   );
 };
 
-const Pizza = ({name, photoName, ingredients}) => {
+const Pizza = ({ name, photoName, ingredients }) => {
   return (
     <article>
       <h3>{name}</h3>
