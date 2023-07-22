@@ -68,7 +68,7 @@ const Header = () => {
 const Main = () => {
   const pizzas = pizzaData;
   // const pizzas = [];
-  
+
   return (
     <main className='menu'>
       <h2>Our menu</h2>
@@ -109,6 +109,8 @@ const Footer = () => {
 };
 
 const Pizza = ({ pizza }) => {
+  if (pizza.soldOut) return null;
+
   return (
     <li className='pizza'>
       <img src={`./${pizza.photoName}`} alt={`pizza ${pizza.name}.`} />
