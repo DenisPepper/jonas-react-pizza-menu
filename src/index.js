@@ -85,16 +85,31 @@ const Main = () => {
 };
 
 const Footer = () => {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour < closeHour;
+  
   return (
     <footer className='footer'>
-      {new Date().toLocaleDateString()}. We are currently open!
+      {
+        isOpen && 
+        (
+          <div className='order'>
+            <p>
+              We are open until {closeHour}:00. Come visit us or order online.
+            </p>
+            <button className='btn' type='button'>Order</button>
+          </div>
+        )
+      }
     </footer>
   );
 };
 
 const Pizza = ({ name, photoName, ingredients, price }) => {
   return (
-    <article className='pizza'>
+    <li className='pizza'>
       <img
         src={`./${photoName}`}
         alt={`pizza ${name}.`}
@@ -104,7 +119,7 @@ const Pizza = ({ name, photoName, ingredients, price }) => {
         <p>{ingredients}</p>
         <span>{price}</span>
       </div>
-    </article>
+    </li>
   );
 };
 
