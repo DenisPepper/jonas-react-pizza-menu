@@ -66,7 +66,7 @@ const Header = () => {
 };
 
 const Main = () => {
-  const pizzas = pizzaData;
+  const pizzas = [];
 
   return (
     <main className='menu'>
